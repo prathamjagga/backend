@@ -2,11 +2,17 @@ const Advertisement = require("../models/Advertisement");
 
 async function searchAds(req, res) {
   try {
+    const regex = new RegExp(req.params.query, "i");
     res
       .send({
         success: true,
         result: await Advertisement.find({
-          $text: { $search: req.params.query },
+          $or: [
+            { company: { $regex: regex } },
+            { headline: { $regex: regex } },
+            { desc: { $regex: regex } },
+            { primaryText: { $regex: regex } },
+          ],
         }),
       })
       .status(200);
