@@ -6,7 +6,7 @@ async function searchAds(req, res) {
       .send({
         success: true,
         result: await Advertisement.find({
-          $text: { $search: req.body.query },
+          $text: { $search: req.params.query },
         }),
       })
       .status(200);
