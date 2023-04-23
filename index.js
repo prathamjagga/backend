@@ -1,6 +1,12 @@
 const express = require("express");
-const mongoose = require("mongoose");
+
+const { connectDB } = require("./db/init"); // connect to database
 
 const app = express();
 
-app.listen(5000, () => console.log("welcome to backend"));
+async function main() {
+  await connectDB();
+  app.listen(5000, () => console.log("Welcome to backend"));
+}
+
+main();
