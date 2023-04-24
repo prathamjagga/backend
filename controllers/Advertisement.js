@@ -7,14 +7,7 @@ async function searchAds(req, res) {
     res
       .send({
         success: true,
-        result: await Advertisement.find({
-          $or: [
-            { company: { $regex: regex } },
-            { headline: { $regex: regex } },
-            { desc: { $regex: regex } },
-            { primaryText: { $regex: regex } },
-          ],
-        }),
+        result: await Advertisement.find({ $text: { $search: query } }),
       })
       .status(200);
   } catch (err) {
