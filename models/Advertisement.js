@@ -26,7 +26,7 @@ const AdvertisementSchema = new mongoose.Schema({
 AdvertisementSchema.index({
   headline: "text",
   primaryText: "text",
-  desc: "text",
+  // desc: "text", it is optional to add desc to search index
   company: "text",
 });
 

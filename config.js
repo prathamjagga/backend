@@ -2,5 +2,4 @@
 // specify your configuration variables here
 
 MONGOURI = "";
-
 module.exports = { MONGOURI };
